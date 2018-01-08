@@ -13,7 +13,7 @@ $(document).ready(function(){
                console.log(response);
      
               var quizzIndex = 0;
-              var questions_max = 10;
+ 
               
               //  Variable that will hold our setInterval that runs the stopwatch
               var intervalId;
@@ -136,8 +136,9 @@ $(document).ready(function(){
           
               $("#play-again").on ('click', function(){
                  // modal "play-again" id on click..
-                 
+                  
                   quizzIndex++;
+                  gameoverCheck();
                   console.log(quizzIndex);
                   quizzgen(question);
                   stopwatch.reset(true);
@@ -237,7 +238,7 @@ $(document).ready(function(){
 
               console.log("regular",stopwatch.time);
 
-              if(stopwatch.time === 10){
+              if(stopwatch.time === 20){
                 
                 losescore();
 
@@ -270,12 +271,14 @@ $(document).ready(function(){
               // shows playerLosses variable in <span id= "number_of_Losses"></span>
               jQuery.noConflict(); 
               // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
+              $("#ans").html("<p>"+question.results[quizzIndex].correct_answer+"</p><p>")
+
               $("#result").html("<p>"+"You lose!!"+"</p>");
               // change Html modal header to lose.
               $('#myModal').modal('show'); 
               // show modal.
               console.log(playerTotal);    
-              stopwatch.stop(true);  
+              stopwatch.stop(true);   
              }
 
 
@@ -287,20 +290,30 @@ $(document).ready(function(){
                   // shows playerWin variable in <span id= "number_of_Wins"></span>.
             jQuery.noConflict(); 
                   // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
-            $("#result").html("<p>"+"You won!!"+"</p>");
+             $("#ans").html("<p>"+question.results[quizzIndex].correct_answer+"</p><p>")
+             
+             $("#result").html("<p>"+"You won!!"+"</p>");
                   // change Html modal header to won.
             $('#myModal').modal('show');
                   // show modal.   
                   console.log(playerTotal);    
-                  stopwatch.stop(true);     
+                  stopwatch.stop(true); 
           };
+
+          function gameoverCheck(){
+            if(quizzIndex === 10){
+              $("#hide").hide();
+            } 
+          }
 
              $("#number_of_Wins").text(playerWin);
              // Show winning score.
              $("#number_of_Losses").text(playerLosses);
              // show lossing score.
+             
              quizzgen();  
              stopwatch.start(true);
+
 
           });
 
