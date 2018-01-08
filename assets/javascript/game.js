@@ -111,6 +111,11 @@ $(document).ready(function(){
                 var arr = [1,2,3,4];
                 arr = shuffle(arr);
                 console.log(question);
+
+                document.getElementById("opt1").checked = false;
+                document.getElementById("opt2").checked = false;
+                document.getElementById("opt3").checked = false;
+                document.getElementById("opt4").checked = false;
         
                 $("#question").html(movieDiv);
                 $("#option"+arr[0]).text(question.results[quizzIndex].correct_answer);
@@ -119,28 +124,9 @@ $(document).ready(function(){
                 $("#option"+arr[3]).text(question.results[quizzIndex].incorrect_answers[2]);
             };
 
+          
 
 
-          
-          
-              function score(){
-                  // Wins and losses function
-              
-                      playerWin++;
-                      // increment winning score.
-                      $("#number_of_Wins").text(playerWin);
-                      // shows playerWin variable in <span id= "number_of_Wins"></span>.
-                      jQuery.noConflict(); 
-                      // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
-                      $("#result").html("<p>"+"You won!!"+"</p>");
-                      // change Html modal header to won.
-                      $('#myModal').modal('show');
-                      // show modal.   
-              };
-              $("#number_of_Wins").text(playerWin);
-              // Show winning score.
-              $("#number_of_Losses").text(playerLosses);
-              // show lossing score.
           
               function resetgame(){
           
@@ -157,56 +143,104 @@ $(document).ready(function(){
                   stopwatch.reset(true);
                   stopwatch.start(true);
                   resetgame();
-                  
-          
+
                   // call resetgame function.
               });
 
-             
                 // modal "play-again" id on click..
             $("#opt1").on('click',function(){
                  
                   var x = document.getElementById("option1").innerText;
 
                   if(x === question.results[quizzIndex].correct_answer){
-                      score();
-                      quizzgen();  
-                      stopwatch.start(true);
+                      
+                      winscore();
+                      
 
-                  }
+                  }else{
+                      losescore();
 
+                  };
+                  
                   console.log(x);
-               
+     
                   console.log(question.results[quizzIndex].correct_answer);
-                   quizzIndex++;
-                   console.log(quizzIndex);
-                   stopwatch.stop(true)
-                   stopwatch.reset(true);
-                  resetgame();
+                  console.log(quizzIndex);
 
-                 // call resetgame function.
              });
+             $("#opt2").on('click',function(){
+                 
+                 var x = document.getElementById("option2").innerText;
+
+                 if(x === question.results[quizzIndex].correct_answer){
+                  
+                  winscore();
+                  
+
+                 }else{
+                  losescore();
+
+                 };
+              
+                 console.log(x);
+
+                 console.log(question.results[quizzIndex].correct_answer);
+                 console.log(quizzIndex);
+
+             });  
+             $("#opt3").on('click',function(){
+                 
+              var x = document.getElementById("option3").innerText;
+
+              if(x === question.results[quizzIndex].correct_answer){
+                  
+                  winscore();
+                  
+
+              }else{
+                  losescore();
+
+              };
+              
+              console.log(x);
+              
+              console.log(question.results[quizzIndex].correct_answer);
+              console.log(quizzIndex);
+
+         });     
+         $("#opt4").on('click',function(){
+                 
+          var x = document.getElementById("option4").innerText;
+
+          if(x === question.results[quizzIndex].correct_answer){
+              
+              winscore();
+              
+
+          }else{
+              losescore();
+
+          };
+          
+          console.log(x);
+   
+          console.log(question.results[quizzIndex].correct_answer);
+          console.log(quizzIndex);
+
+     });       
+ 
 
       
             
-            function control(){
+            
+             function control(){
 
               console.log("regular",stopwatch.time);
 
               if(stopwatch.time === 10){
-        
-               playerLosses++;
-               // increment losing score.
-               $("#number_of_Losses").text(playerLosses);
-               // shows playerLosses variable in <span id= "number_of_Losses"></span>
-               jQuery.noConflict(); 
-               // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
-               $("#result").html("<p>"+"You lose!!"+"</p>");
-               // change Html modal header to lose.
-               $('#myModal').modal('show'); 
-               // show modal.
-               console.log(playerTotal);    
-               stopwatch.stop(true);  
+                
+                losescore();
+
               }
            };
            function shuffle(array) {
@@ -226,7 +260,45 @@ $(document).ready(function(){
                }
              
                return array;
-             }  
+             } 
+             
+             
+             function losescore(){
+              playerLosses++;
+              // increment losing score.
+              $("#number_of_Losses").text(playerLosses);
+              // shows playerLosses variable in <span id= "number_of_Losses"></span>
+              jQuery.noConflict(); 
+              // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
+              $("#result").html("<p>"+"You lose!!"+"</p>");
+              // change Html modal header to lose.
+              $('#myModal').modal('show'); 
+              // show modal.
+              console.log(playerTotal);    
+              stopwatch.stop(true);  
+             }
+
+
+             function winscore(){
+              // Wins and losses function
+            playerWin++;
+                  // increment winning score.
+            $("#number_of_Wins").text(playerWin);
+                  // shows playerWin variable in <span id= "number_of_Wins"></span>.
+            jQuery.noConflict(); 
+                  // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
+            $("#result").html("<p>"+"You won!!"+"</p>");
+                  // change Html modal header to won.
+            $('#myModal').modal('show');
+                  // show modal.   
+                  console.log(playerTotal);    
+                  stopwatch.stop(true);     
+          };
+
+             $("#number_of_Wins").text(playerWin);
+             // Show winning score.
+             $("#number_of_Losses").text(playerLosses);
+             // show lossing score.
              quizzgen();  
              stopwatch.start(true);
 
