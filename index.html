@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Trivia Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body background="./assets/img/cine1.jpg" id="bg" alt"">
+     <div class="jumbotron" display="flex" justify-content="center" align-items="center">
+       <div class="image-center"><img src="./assets/img/Trivial-Trivia-Game.png" alt="Banner" class="img-responsive center-block"></div> 
+    </div>
+<div class="container" > 
+        <div class="row" display="flex"></div>
+            <div class="col-md-6">
+              <div class="thumbnail">            
+                  <div class="magicNumber">
+                      <h3>You have 10 seconds to answer.</h3><p>                    
+                      <h3>Time remaining:
+                        <span id="display"></span> 
+                      </h3>
+                  </div> 
+              </div>               
+              <div class="thumbnail">            
+                <div class="myscore">
+                  <h3>Your total score is:
+                    <span id="myTotal"></span>
+                  </h3>
+                </div> 
+              </div> 
+              <div class="thumbnail">
+                  <div class="winsAndLosses">
+                   <h2>Wins:
+                    <span id= "number_of_Wins"></span>
+                    </br>
+                    Losses: 
+                    <span id= "number_of_Losses"></span>
+                   </h2>
+                 </div> 
+                </div>  
+            </div>                 
+            <div class="col-md-6">
+              <div class="thumbnail">            
+                  <div class="instructions">
+                    <h3 id="question"></h3>
+                    </br>
+                    <ol>
+                      <ul>
+                        <form>
+                          <form id="select" action="/action_page.php">
+                            <input type="radio" name="answer" id="opt1" value="1"><label id="option1"></label><br>                      
+                            <input type="radio" name="answer" id="opt2" value="2"><label id="option2"></label><br>
+                            <input type="radio" name="answer" id="opt3" value="3"><label id="option3"></label><br>
+                            <input type="radio" name="answer" id="opt4" value="4"><label id="option4"></label><br><br>
+                          </form> 
+                        </form>
+                      </ul>
+                    </ol>
+                  </div>  
+              </div>
+          </div> 
+                 
+          <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4>
+                      <span id="result"></span>
+                      <button type="button" id="play-again" class="btn btn-default" data-dismiss="modal">Play again!</button>
+                    </h4>                 
+                  </div>
+                </div>           
+              </div>
+            </div>
+        </div>     
+</div>
+<div align="center">
+  <button id="submit" class="btn btn-primary btn-lg"><h1><span class="glyphicon glyphicon-hand-right"></span>  Submit</h1></button></div> 
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+<script type="text/javascript" src="./assets/javascript/game.js"></script>
+</body>
+</html>

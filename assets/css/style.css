@@ -1,0 +1,49 @@
+/* General Elements*/
+h3 {
+    color: #0f357a;
+    text-align: center;     
+}
+li {  
+    color: #0f131b;
+    font-size: 16px;
+}
+
+/* IDs */
+#blue{
+	color: #062b3f;
+}
+#green{
+	color: #00aa59;
+}
+#red{
+	color: #ec4b5f;
+}
+#yellow{
+	color: #ffc225;
+}
+#blue,#green,#red,#yellow {
+    font-size: 20px;
+}
+#top{
+    color: #2c3c44;
+    align-content: center;
+}
+#bg {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+      
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+  }
+  .modal-header, h4, .close {
+    background-color: #21a2dd;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+  
+
+ 
