@@ -1,7 +1,9 @@
 
 $(document).ready(function(){
+  $("#hide1").hide();
+        //var url = "https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple";
 
-        var url = "https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple";
+        var url = "https://opentdb.com/api.php?amount=10&encode=url3986";
         $.ajax({
             url: url,
             method: "GET"
@@ -101,9 +103,10 @@ $(document).ready(function(){
               console.log(question);
                 var movieDiv = $("<div>");
                 var movie_name = question.results[quizzIndex].question;     
-                var movieURL = $("<a>");
-                    movieURL.append(movie_name);
-                    movieURL.attr("href", movie_name);
+                var movieURL = $("<p>");
+                var uri_dec = decodeURIComponent(movie_name);
+                    movieURL.text(uri_dec);
+                    // movieURL.attr("href", movie_name);
                 var p = $("<p>");
                 movieDiv.append(movieURL);
                 movieDiv.append(p);
@@ -307,6 +310,7 @@ $(document).ready(function(){
           function gameoverCheck(){
             if(quizzIndex === 10){
               $("#hide").hide();
+              $("#hide1").show();
             } 
           }
 
