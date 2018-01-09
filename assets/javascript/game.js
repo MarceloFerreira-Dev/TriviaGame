@@ -130,7 +130,7 @@ $(document).ready(function(){
           
               function resetgame(){
           
-                  $("#myTotal").text(playerTotal);
+                  //$("#myTotal").text(playerTotal);
 
               };
           
@@ -268,6 +268,8 @@ $(document).ready(function(){
               playerLosses++;
               // increment losing score.
               $("#number_of_Losses").text(playerLosses);
+
+              $("#myTotal").text(playerWin-playerLosses);
               // shows playerLosses variable in <span id= "number_of_Losses"></span>
               jQuery.noConflict(); 
               // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
@@ -287,6 +289,8 @@ $(document).ready(function(){
             playerWin++;
                   // increment winning score.
             $("#number_of_Wins").text(playerWin);
+
+            $("#myTotal").text(playerWin-playerLosses);
                   // shows playerWin variable in <span id= "number_of_Wins"></span>.
             jQuery.noConflict(); 
                   // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
@@ -306,13 +310,14 @@ $(document).ready(function(){
             } 
           }
 
-             $("#number_of_Wins").text(playerWin);
+            $("#number_of_Wins").text(playerWin);
              // Show winning score.
-             $("#number_of_Losses").text(playerLosses);
+            $("#number_of_Losses").text(playerLosses);
              // show lossing score.
+            $("#myTotal").text(playerWin-playerLosses);
              
-             quizzgen();  
-             stopwatch.start(true);
+            quizzgen();  
+            stopwatch.start(true);
 
 
           });
