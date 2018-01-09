@@ -3,7 +3,7 @@ $(document).ready(function(){
   $("#hide1").hide();
         //var url = "https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple";
 
-        var url = "https://opentdb.com/api.php?amount=10&encode=url3986";
+        var url = "https://opentdb.com/api.php?amount=10&category=11&type=multiple&encode=url3986";
         $.ajax({
             url: url,
             method: "GET"
@@ -119,12 +119,17 @@ $(document).ready(function(){
                 document.getElementById("opt2").checked = false;
                 document.getElementById("opt3").checked = false;
                 document.getElementById("opt4").checked = false;
-        
+
+                var answer1 = decodeURIComponent(question.results[quizzIndex].correct_answer);
+                var answer2 = decodeURIComponent(question.results[quizzIndex].incorrect_answers[0]);
+                var answer3 = decodeURIComponent(question.results[quizzIndex].incorrect_answers[1]);
+                var answer4 = decodeURIComponent(question.results[quizzIndex].incorrect_answers[2]);
+
                 $("#question").html(movieDiv);
-                $("#option"+arr[0]).text(question.results[quizzIndex].correct_answer);
-                $("#option"+arr[1]).text(question.results[quizzIndex].incorrect_answers[0]);
-                $("#option"+arr[2]).text(question.results[quizzIndex].incorrect_answers[1]);
-                $("#option"+arr[3]).text(question.results[quizzIndex].incorrect_answers[2]);
+                $("#option"+arr[0]).text(answer1);
+                $("#option"+arr[1]).text(answer2);
+                $("#option"+arr[2]).text(answer3);
+                $("#option"+arr[3]).text(answer4);
             };
 
           
@@ -156,7 +161,7 @@ $(document).ready(function(){
                  
                   var x = document.getElementById("option1").innerText;
 
-                  if(x === question.results[quizzIndex].correct_answer){
+                  if(x === decodeURIComponent(question.results[quizzIndex].correct_answer)){
                       
                       winscore();
                       
@@ -176,7 +181,7 @@ $(document).ready(function(){
                  
                  var x = document.getElementById("option2").innerText;
 
-                 if(x === question.results[quizzIndex].correct_answer){
+                 if(x === decodeURIComponent(question.results[quizzIndex].correct_answer)){
                   
                   winscore();
                   
@@ -196,7 +201,7 @@ $(document).ready(function(){
                  
               var x = document.getElementById("option3").innerText;
 
-              if(x === question.results[quizzIndex].correct_answer){
+              if(x === decodeURIComponent(question.results[quizzIndex].correct_answer)){
                   
                   winscore();
                   
@@ -216,7 +221,7 @@ $(document).ready(function(){
                  
           var x = document.getElementById("option4").innerText;
 
-          if(x === question.results[quizzIndex].correct_answer){
+          if(x === decodeURIComponent(question.results[quizzIndex].correct_answer)){
               
               winscore();
               
@@ -276,7 +281,7 @@ $(document).ready(function(){
               // shows playerLosses variable in <span id= "number_of_Losses"></span>
               jQuery.noConflict(); 
               // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
-              $("#ans").html("<p>"+question.results[quizzIndex].correct_answer+"</p><p>")
+              $("#ans").html("<p>"+decodeURIComponent(question.results[quizzIndex].correct_answer)+"</p><p>")
 
               $("#result").html("<p>"+"You lose!!"+"</p>");
               // change Html modal header to lose.
@@ -297,7 +302,7 @@ $(document).ready(function(){
                   // shows playerWin variable in <span id= "number_of_Wins"></span>.
             jQuery.noConflict(); 
                   // If for some reason two versions of jQuery are loaded, calling $.noConflict( true ) from the second version will return the globally scoped jQuery variables to those of the first version.
-             $("#ans").html("<p>"+question.results[quizzIndex].correct_answer+"</p><p>")
+             $("#ans").html("<p>"+decodeURIComponent(question.results[quizzIndex].correct_answer)+"</p><p>")
              
              $("#result").html("<p>"+"You won!!"+"</p>");
                   // change Html modal header to won.
