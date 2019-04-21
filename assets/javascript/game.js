@@ -2,6 +2,8 @@
 $(document).ready(function(){
   $("#hide1").hide();
         //var url = "https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple";
+        //var url = "https://opentdb.com/api.php?amount=10&category=11&type=multiple&encode=url3986";
+
 
         var url = "https://opentdb.com/api.php?amount=10&category=11&type=multiple&encode=url3986";
         $.ajax({

@@ -1,4 +1,7 @@
 /* General Elements*/
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { /* STYLES GO HERE */}
 h3 {
     color: #0f357a;
     text-align: center;     
